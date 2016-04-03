@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buyrui.finding.ebayitems.mapper.CategoryMapper">
+	
+	<resultMap type="com.buyrui.finding.ebayitems.domain.Category" id="categoryMap">
+		<result property="id" column="id" />
+		<result property="categoryId" column="category_id" />
+		<result property="categoryName" column="category_name" />
+		<result property="comment" column="comment" />
+		<result property="parentId" column="parent_id" />
+		<result property="enabled" column="enabled" />
+	</resultMap>
+	
+	<select id="findById" resultMap="categoryMap">
+		select id, category_id, category_name, comment, parent_id, enabled from category where category_id = #{category_id}
+	</select>
+	
+	<select id="findAll" resultMap="categoryMap">
+        select id, category_id, category_name, comment, parent_id, enabled from category
+    </select>
+	
+</mapper>
