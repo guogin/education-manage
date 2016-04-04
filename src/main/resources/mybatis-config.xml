@@ -8,5 +8,11 @@
 		<setting name="useGeneratedKeys" value="true" />
 		<setting name="defaultExecutorType" value="SIMPLE" />
 		<setting name="defaultStatementTimeout" value="10" />
-	</settings>	
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="HashMap" type="java.util.HashMap" />
+		<typeAlias alias="String" type="java.lang.String" />
+		<typeAlias alias="Integer" type="java.lang.Integer" />
+	</typeAliases>
 </configuration>

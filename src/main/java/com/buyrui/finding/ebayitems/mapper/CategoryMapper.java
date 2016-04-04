@@ -8,6 +8,8 @@ public interface CategoryMapper {
     Category findById(String category_id);
 
     Collection<Category> findAll();
+    
+    Collection<Category> search(String[] keywords);
 
-    void insert(Category category);
+    Integer insert(Category category);
 }

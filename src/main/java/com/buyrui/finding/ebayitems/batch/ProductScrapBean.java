@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.buyrui.finding.ebayitems.scrap.EbayAppNovaCoders;
 
 
 @Profile("batch")
@@ -18,7 +17,7 @@ public class ProductScrapBean {
     @Scheduled(cron = "${batch.greeting.cron}")
     public void cronJob() {
         logger.info("> cronJob");
-        new EbayAppNovaCoders().findGalleryUrl();
+        //new EbayAppNovaCoders().findGalleryUrl();
         logger.info("< cronJob");
     }
 

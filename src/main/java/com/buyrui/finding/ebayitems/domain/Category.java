@@ -18,31 +18,47 @@ public class Category implements Serializable{
     private Integer id;
     
     @Column(name = "category_id", nullable = false)
-    private String categoryId;
+    private String category_id;
 
     @Column(name = "category_name", nullable = false)
-    private String categoryName;
+    private String category_name;
     
     @Column(name = "comment", nullable = true)
     private String comment;
     
     @Column(name = "parent_id", nullable = true)
-    private String parentId;
+    private String parent_id;
     
     @Column(name = "enabled", nullable = false)
     private Boolean enabled;
-    
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
 
     public Category() {
     }
-    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
+    }
+
+    public String getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
+    }
+
     public String getComment() {
         return comment;
     }
@@ -51,35 +67,19 @@ public class Category implements Serializable{
         this.comment = comment;
     }
 
-    public String getParentId() {
-        return parentId;
+    public String getParent_id() {
+        return parent_id;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
+    public void setParent_id(String parent_id) {
+        this.parent_id = parent_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Integer getId() {
-        return id;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

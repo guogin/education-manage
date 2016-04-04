@@ -12,8 +12,10 @@ jdbc:
   testOnReturn: false
   testWhileIdle: true
   timeBetweenEvictionRunsMillis: 60000
-  minEvictableIdleTimeMillis: -1
+  minEvictableIdleTimeMillis: 8000000
 spring:
   datasource:
     schema: classpath:/data/mysql/schema.sql
     data: classpath:/data/hsqldb/data.sql
+  jpa:
+    show-sql: true
