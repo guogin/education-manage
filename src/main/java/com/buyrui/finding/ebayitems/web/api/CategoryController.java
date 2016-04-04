@@ -25,7 +25,7 @@ public class CategoryController extends BaseController {
     @Autowired
     CategoryService categoryService;
 
-    @RequestMapping(value = "/category",
+    @RequestMapping(value = "/api/category",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Category>> findAll() throws Exception {
@@ -36,7 +36,7 @@ public class CategoryController extends BaseController {
                 HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/category/search",
+    @RequestMapping(value = "/api/category/search",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Category>> search(@RequestParam("s") String keywords) throws Exception {
@@ -47,7 +47,7 @@ public class CategoryController extends BaseController {
                 HttpStatus.OK);
     }
 
-    @RequestMapping(value = { "/category/{category_id}" },
+    @RequestMapping(value = { "/api/category/{category_id}" },
                     method = { RequestMethod.GET })
     @ResponseBody
     public Category findOne(@PathVariable("category_id") String category_id)
@@ -56,7 +56,7 @@ public class CategoryController extends BaseController {
         return res.get(1000, TimeUnit.MILLISECONDS);
     }
 
-    @RequestMapping(value = "/category/create",
+    @RequestMapping(value = "/api/category/create",
                     method = RequestMethod.POST,
                     produces = MediaType.APPLICATION_JSON_VALUE,
                     consumes = MediaType.APPLICATION_JSON_VALUE)

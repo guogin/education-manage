@@ -26,13 +26,12 @@ public class UserController extends BaseController {
     @Autowired
     UserService userService;
 
-    @RequestMapping
-    @ResponseBody
+    @RequestMapping("/public/")
     public String index() {
-        return "Hello! Spring Boot~";
+        return "public/index";
     }
 
-    @RequestMapping(value = "/user",
+    @RequestMapping(value = "/api/user",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<User>> findAll() throws Exception {
@@ -41,7 +40,7 @@ public class UserController extends BaseController {
         return new ResponseEntity<Collection<User>>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = { "/user/{id}" },
+    @RequestMapping(value = { "/api/user/{id}" },
                     method = { RequestMethod.GET })
     @ResponseBody
     public User findOne(@PathVariable("id") String id) throws Exception {
@@ -49,7 +48,7 @@ public class UserController extends BaseController {
         return res.get(1000, TimeUnit.MILLISECONDS);
     }
 
-    @RequestMapping(value = { "/user" },
+    @RequestMapping(value = { "/api/user" },
                     method = { RequestMethod.GET })
     @ResponseBody
     public String register(@RequestParam("name") String name,
