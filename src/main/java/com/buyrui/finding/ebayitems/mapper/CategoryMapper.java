@@ -12,4 +12,6 @@ public interface CategoryMapper {
     Collection<Category> search(String[] keywords);
 
     Integer insert(Category category);
+    
+    Category save(Category category);
 }
