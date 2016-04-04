@@ -17,9 +17,9 @@ or copy the files from `dist/`. Then add the sources to your code (adjust paths 
 adding the dependencies for Angular and Chart.js first:
 
 ```html
-<script src="../lib/angular/angular.min.js"></script>
-<script src="/lib/Chart.js/Chart.min.js"></script>
-<script src="/lib/angular-chart.js/dist/angular-chart.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/Chart.js/Chart.min.js"></script>
+<script src="/bower_components/angular-chart.js/dist/angular-chart.js"></script>
 ```
 
 # Utilisation

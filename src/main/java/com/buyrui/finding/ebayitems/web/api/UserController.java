@@ -59,7 +59,7 @@ public class UserController extends BaseController {
 
     @RequestMapping("/velocity")
     public String velocity(Model model) {
-        model.addAttribute("testparam", "hi boot..");
+        model.addAttribute("testparam", "Test Dev Tools");
         return "index";
     }
 }

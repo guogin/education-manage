@@ -1,6 +1,5 @@
 'use strict';
 
-angular.module('sbAdminApp')
-    .controller('FormCtrl', function ($scope) {
+app.controller('FormCtrl', function ($scope) {
 
-    });
+});

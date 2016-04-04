@@ -34,10 +34,10 @@ var App = angular.module('app', ['ui.router', 'oc.lazyLoad'])
             return $ocLazyLoad.load({
               name: 'oc.modal',
               files: [
-                'lib/bootstrap/dist/css/bootstrap.css', // will use the cached version if you already loaded bootstrap with the button
-                'lib/ocModal/dist/css/ocModal.animations.css',
-                'lib/ocModal/dist/css/ocModal.light.css',
-                'lib/ocModal/dist/ocModal.js',
+                'bower_components/bootstrap/dist/css/bootstrap.css', // will use the cached version if you already loaded bootstrap with the button
+                'bower_components/ocModal/dist/css/ocModal.animations.css',
+                'bower_components/ocModal/dist/css/ocModal.light.css',
+                'bower_components/ocModal/dist/ocModal.js',
                 'partials/modal.html'
               ]
             }).then(function() {

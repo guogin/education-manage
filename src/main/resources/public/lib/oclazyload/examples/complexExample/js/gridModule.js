@@ -1,8 +1,8 @@
 // ngGrid is also lazy loaded by $ocLazyLoad thanks to the module dependency injection !
 angular.module('gridModule', [{
   name: 'ui.grid.rowEdit', files: [
-    'lib/angular-ui-grid/ui-grid.js',
-    'lib/angular-ui-grid/ui-grid.css'
+    'bower_components/angular-ui-grid/ui-grid.js',
+    'bower_components/angular-ui-grid/ui-grid.css'
   ]
 }]).controller('GridModuleCtrl', function($scope) {
   console.log('-------  grid module ctrl');

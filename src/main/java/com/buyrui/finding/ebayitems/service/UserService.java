@@ -1,7 +1,6 @@
 package com.buyrui.finding.ebayitems.service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.Future;
 
 import org.apache.commons.lang.StringUtils;

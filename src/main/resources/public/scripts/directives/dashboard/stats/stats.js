@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sbAdminApp').directive('stats', function () {
+app.directive('stats', function () {
     return {
         templateUrl: 'scripts/directives/dashboard/stats/stats.html',
         restrict: 'E',

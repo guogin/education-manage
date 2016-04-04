@@ -2,14 +2,15 @@
 /**
  * Main module of the application.
  */
-angular
-    .module('sbAdminApp', [
+var app = angular.module('sbAdminApp', [
         'oc.lazyLoad',
         'ui.router',
         'ui.bootstrap',
         'angular-loading-bar',
-    ])
-    .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+    ]);
+
+app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', 
+            function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 
         $ocLazyLoadProvider.config({
             debug: false,
@@ -18,8 +19,7 @@ angular
 
         $urlRouterProvider.otherwise('/dashboard/home');
 
-        $stateProvider
-            .state('dashboard', {
+        $stateProvider.state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'views/dashboard/main.html',
                 resolve: {
@@ -105,8 +105,19 @@ angular
                 url: '/table'
             })
             .state('dashboard.category', {
+            	controller: 'CategoryCtrl',
                 templateUrl: 'views/category.html',
-                url: '/table'
+                url: '/category',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: 'sbAdminApp',
+                            files: [
+                                'scripts/controllers/category.js',
+                            ]
+                        })
+                    }
+                }
             })
             .state('dashboard.panels-wells', {
                 templateUrl: 'views/ui-elements/panels-wells.html',

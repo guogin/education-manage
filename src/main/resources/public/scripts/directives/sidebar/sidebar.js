@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sbAdminApp').directive('sidebar', ['$location', function () {
+app.directive('sidebar', ['$location', function () {
     return {
         templateUrl: 'scripts/directives/sidebar/sidebar.html',
         restrict: 'E',

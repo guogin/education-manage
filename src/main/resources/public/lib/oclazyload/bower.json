@@ -7,7 +7,7 @@
   "authors": ["Olivier Combe <olivier.combe@gmail.com>"],
   "license": "MIT",
   "keywords": ["lazy load", "lazy-load", "load on demand", "module", "angular", "angularJS"],
-  "ignore": ["**/.*", "node_modules", "lib", "src", "gulpfile.js", "package.json", "changelog.js", "validate-commit-msg.js", "tests", "karma.conf.js"],
+  "ignore": ["**/.*", "node_modules", "bower_components", "src", "gulpfile.js", "package.json", "changelog.js", "validate-commit-msg.js", "tests", "karma.conf.js"],
   "devDependencies": {
     "angular-mocks": "~1.3.2"
   },

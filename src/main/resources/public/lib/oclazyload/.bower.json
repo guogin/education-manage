@@ -19,7 +19,7 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "lib",
+    "bower_components",
     "src",
     "gulpfile.js",
     "package.json",
