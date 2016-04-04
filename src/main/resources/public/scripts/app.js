@@ -7,6 +7,7 @@ var app = angular.module('sbAdminApp', [
         'ui.router',
         'ui.bootstrap',
         'angular-loading-bar',
+        'datatables',
     ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', 
