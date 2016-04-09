@@ -1,6 +1,5 @@
 package com.buyrui.finding.ebayitems.domain;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Category implements Serializable{
+public class Category {
     
     private static final long serialVersionUID = 1L;
     

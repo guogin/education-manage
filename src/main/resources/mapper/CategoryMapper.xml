@@ -72,4 +72,16 @@
 			SELECT LAST_INSERT_ID();
 		</selectKey>
 	</insert>
+	
+	<update id="update" parameterType="com.buyrui.finding.ebayitems.domain.Category">
+        UPDATE category
+        <set>
+            <if test="category_id != null"> category_id = #{category_id,jdbcType=VARCHAR}, </if>
+            <if test="category_name != null"> category_name = #{category_name,jdbcType=VARCHAR}, </if>
+            <if test="comment != null"> comment = #{comment,jdbcType=VARCHAR}, </if>
+            <if test="parent_id != null"> parent_id = #{parent_id,jdbcType=VARCHAR}, </if>
+            <if test="enabled != null"> enabled = #{enabled,jdbcType=TINYINT}, </if>
+        </set>
+        WHERE id = #{id};
+    </update>
 </mapper>

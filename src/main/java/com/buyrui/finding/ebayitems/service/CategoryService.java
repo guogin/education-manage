@@ -1,6 +1,7 @@
 package com.buyrui.finding.ebayitems.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.buyrui.finding.ebayitems.domain.Category;
 import com.buyrui.finding.ebayitems.mapper.CategoryMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -38,21 +41,30 @@ public class CategoryService {
         return new AsyncResult<Category>(categoryMapper.findById(category_id));
     }
 
+    @SuppressWarnings("rawtypes")
     @Async
-    public Future<Collection<Category>> findAll() {
-        logger.info("> Find All");
-        return new AsyncResult<Collection<Category>>(categoryMapper.findAll());
+    public Future<PageInfo> findAll(Integer page, Integer size) {
+        logger.info("> Find All page:" + page + ", size: " + size);
+        
+        PageHelper.startPage(page, size);
+        PageHelper.orderBy("category_id desc");
+        List<Category> collection = categoryMapper.findAll();
+        PageInfo<Category> pageInfo = new PageInfo<Category>(collection);
+        return new AsyncResult<PageInfo>(pageInfo);
     }
 
+    @SuppressWarnings("rawtypes")
     @Async
-    public Future<Collection<Category>> search(String keys) {
+    public Future<PageInfo> search(String keys, Integer page, Integer size) {
         logger.info("> Search...");
         String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(keys);
         String[] keywords = m.replaceAll("").trim().split(" ");
-        return new AsyncResult<Collection<Category>>(categoryMapper.search(
+        PageHelper.startPage(page, size);
+        PageInfo<Category> pageInfo = new PageInfo<Category>(categoryMapper.search(
                 keywords));
+        return new AsyncResult<PageInfo>(pageInfo);
     }
 
     @Async
@@ -70,7 +82,7 @@ public class CategoryService {
     
     @Async
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public Future<Category> update(Category category) {
+    public Future<Integer> update(Category category) {
         Category categoryPersisted = categoryMapper.findById(category.getCategory_id());
 
         if (categoryPersisted == null) {
@@ -79,7 +91,7 @@ public class CategoryService {
                             + category.getCategory_id());
         }
 
-        Category updateCategory = categoryMapper.save(category);
-        return new AsyncResult<Category>(updateCategory);
+        Integer rows = categoryMapper.update(category);
+        return new AsyncResult<Integer>(rows);
     }
 }
