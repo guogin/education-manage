@@ -8,7 +8,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="dataTable_wrapper">
-                    <table datatable="ng" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table datatable="ng" class="table table-striped table-bordered table-hover" id="category-table">
                         <thead>
                         <tr>
                             <th>编号</th>
@@ -26,7 +26,10 @@
 				            <td>{{ category.category_name }}</td>
 				            <td>{{ category.comment }}</td>
                             <td>{{ category.parent_id }}</td>
-                            <td>{{ category.enabled }}</td>
+                            <td>
+                                <toggle-switch ng-model="category.enabled" on-label="启用" off-label="停用" ng-click="updateState()">
+                                <toggle-switch>
+                            </td>
 				        </tr>
                         </tbody>
                     </table>

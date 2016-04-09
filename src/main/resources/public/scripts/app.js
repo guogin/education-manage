@@ -2,7 +2,7 @@
 /**
  * Main module of the application.
  */
-var app = angular.module('sbAdminApp', [
+var app = angular.module('"sbAdminApp"', [
         'oc.lazyLoad',
         'ui.router',
         'ui.bootstrap',

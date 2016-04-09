@@ -16,9 +16,9 @@ public class ProductScrapBean {
 
     @Scheduled(cron = "${batch.greeting.cron}")
     public void cronJob() {
-        logger.info("> cronJob");
+        //logger.info("> cronJob");
         //new EbayAppNovaCoders().findGalleryUrl();
-        logger.info("< cronJob");
+        //logger.info("< cronJob");
     }
 
     @Scheduled(
