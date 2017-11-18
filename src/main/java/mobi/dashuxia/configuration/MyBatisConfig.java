@@ -34,7 +34,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.buyrui.finding.ebayitems.domain");
+        bean.setTypeAliasesPackage("mobi.dashuxia.domain");
 
         //分页插件
         PageHelper pageHelper = new PageHelper();

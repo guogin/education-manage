@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
 import mobi.dashuxia.web.DefaultExceptionAttributes;
 import mobi.dashuxia.web.ExceptionAttributes;
 
@@ -85,42 +84,4 @@ public class BaseController {
         return new ResponseEntity<Map<String, Object>>(responseBody,
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    
-//    @Autowired
-//    private TraceRepository traceRepo;
-//    
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    public Map<String, String> handleValidationError(MethodArgumentNotValidException ex) {
-//        Map<String, String> fieldErrorMap = new HashMap<>();
-//        
-//        BindingResult result = ex.getBindingResult();
-//        List<FieldError> fieldErrors = result.getFieldErrors();
-//        for (FieldError fieldError: fieldErrors) {
-//            fieldErrorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
-//        }
-//
-//        return fieldErrorMap;
-//    }
-//    
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public String handleUnexpectedException(Exception ex) {
-//        logger.error("Error during process request", ex);
-//        return ex.getMessage();
-//    }
-//    
-//    protected void traceAction(String action) {
-//        String user = "anonymous";
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication != null) {
-//            user = authentication.getName();
-//        }
-//        
-//        Map<String, Object> trace = new LinkedHashMap<>();
-//        trace.put("user", user);
-//        trace.put("action", action);
-//        
-//        traceRepo.add(trace);
-//    }
 }

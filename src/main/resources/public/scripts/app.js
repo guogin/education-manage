@@ -105,16 +105,16 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                 templateUrl: 'views/table.html',
                 url: '/table'
             })
-            .state('dashboard.category', {
-            	controller: 'CategoryCtrl',
-                templateUrl: 'views/category.html',
-                url: '/category',
+            .state('dashboard.customer', {
+            	controller: 'CustomerCtrl',
+                templateUrl: 'views/customer.html',
+                url: '/customer',
                 resolve: {
                     loadMyFiles: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name: 'sbAdminApp',
                             files: [
-                                'scripts/controllers/category.js',
+                                'scripts/controllers/customer.js',
                             ]
                         })
                     }

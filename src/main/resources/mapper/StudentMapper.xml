@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mobi.dashuxia.mapper.StudentMapper">
+	<sql id="all_fields">
+		id, student_name, birthday, customer_id, class_period, done_periods, left_periods, is_child
+	</sql>
+	<resultMap type="mobi.dashuxia.domain.Student" id="StudentMap">
+		<result property="id" column="id" />
+		<result property="student_name" column="studentName" />
+		<result property="birthday" column="birthday" />
+		<result property="customer_id" column="customerId" />
+		<result property="class_period" column="classPeriod" />
+		<result property="done_periods" column="donePeriods" />
+		<result property="left_periods" column="leftPeriods" />
+		<result property="is_child" column="isChild" />
+	</resultMap>
+
+	<select id="findById" resultMap="StudentMap">
+		select
+		<include refid="all_fields" />
+		from student where id = #{id}
+	</select>
+
+	<select id="findAll" resultMap="StudentMap">
+		select
+		<include refid="all_fields" />
+		from student
+	</select>
+
+	<select id="search" resultMap="StudentMap">
+		SELECT
+		<include refid="all_fields" />
+		FROM Student where
+		<foreach collection="array" item="keyword" separator="OR"
+			open="(" close=")">
+			student_name like CONCAT('%',#{keyword},'%')
+		</foreach>
+		OR
+		<foreach collection="array" item="keyword" separator="OR"
+			open="(" close=")">
+			id like CONCAT('%',#{keyword},'%')
+		</foreach>
+		OR
+		<foreach collection="array" item="keyword" separator="OR"
+			open="(" close=")">
+			birthday like CONCAT('%',#{keyword},'%')
+		</foreach>
+		OR
+		<foreach collection="array" item="keyword" separator="OR"
+			open="(" close=")">
+			customer_id like CONCAT('%',#{keyword},'%')
+		</foreach>
+	</select>
+	
+	<update id="update" parameterType="mobi.dashuxia.domain.Student">
+        UPDATE student
+        <set>
+            <if test="studentName != null"> student_name = #{studentName,jdbcType=VARCHAR}, </if>
+            <if test="classPeriod != null"> class_period = #{classPeriod,jdbcType=INTEGER}, </if>
+            <if test="donePeriods != null"> done_periods = #{donePeriods,jdbcType=INTEGER}, </if>
+            <if test="isChild != null"> is_child = #{isChild,jdbcType=TINYINT}, </if>
+            <if test="leftPeriods != null"> left_periods = #{leftPeriods,jdbcType=INTEGER},</if>
+            <if test="birthday != null"> birthday = #{birthday,jdbcType=VARCHAR},</if>
+        </set>
+        WHERE id = #{id};
+    </update>
+</mapper>

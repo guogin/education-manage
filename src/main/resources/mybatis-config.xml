@@ -14,6 +14,8 @@
 		<typeAlias alias="HashMap" type="java.util.HashMap" />
 		<typeAlias alias="String" type="java.lang.String" />
 		<typeAlias alias="Integer" type="java.lang.Integer" />
+		<typeAlias alias="Customer" type="mobi.dashuxia.domain.Customer" />
+		<typeAlias alias="Student" type="mobi.dashuxia.domain.Student" />
 	</typeAliases>
 	<!-- plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下: properties?, settings?, typeAliases?, 
 		typeHandlers?, objectFactory?,objectWrapperFactory?, plugins?, environments?, 

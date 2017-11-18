@@ -26,7 +26,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import mobi.dashuxia.configuration.JdbcConnectionSettings;
 
 @Configuration
-@MapperScan(basePackages = "com.buyrui.finding.ebayitems.mapper")
+@MapperScan(basePackages = "mobi.dashuxia.mapper")
 public class MybatisConfig {
 
 	private static Logger log = LoggerFactory.getLogger(MybatisConfig.class);
@@ -70,7 +70,8 @@ public class MybatisConfig {
 		sqlSessionFactory.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
 		sqlSessionFactory.setFailFast(true);
 		sqlSessionFactory.setMapperLocations(getResource("mapper", "**/*.xml"));
-		sqlSessionFactory.setTypeHandlersPackage("com.buyrui.finding.ebayitems.configuration.mybatis.typehandler");
+        sqlSessionFactory.setTypeHandlersPackage(
+                "mobi.dashuxia.configuration.mybatis.typehandler");
 		return sqlSessionFactory.getObject();
 	}
 
