@@ -11,6 +11,18 @@ body {
   padding-right: 15px;
 }
 
+@media (min-height: 768px) {
+  .my-grid {
+    height: 480px;
+  }
+}
+
+@media (min-height: 900px) {
+  .my-grid {
+    height: 615px;
+  }
+}
+
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;

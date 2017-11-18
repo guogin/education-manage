@@ -3,42 +3,51 @@
         <ul class="nav in" id="side-menu">
             <sidebar-search></sidebar-search>
             <li ui-sref-active="active">
-                <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> 仪表盘</a>
+                <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> 指标数据</a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="dashboard.table"><i class="fa fa-table fa-fw"></i> 表格</a>
+                <a ui-sref="dashboard.product"><i class="fa fa-cubes fa-fw"></i> 订单管理</a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="dashboard.category"><i class="fa fa-table fa-fw"></i> 商品类目管理</a>
+                <a ui-sref="dashboard.customer"><i class="fa fa-user-md fa-fw"></i> 客户管理</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.supplier"><i class="fa fa-truck fa-fw"></i> 学生管理</a>
             </li>
             <li ng-class="{active: collapseVar==1}">{{dropDown}}
-                <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> 控件<span
-                        class="fa arrow"></span></a>
+                <a ui-sref="dashboard.financial" ng-click="check(1)">
+                	<i class="fa fa-money fa-fw"></i> 财务管理<span class="fa arrow"></span>
+                </a>
                 <ul class="nav nav-second-level" collapse="collapseVar!=1">
                     <li ui-sref-active="active">
-                        <a ui-sref="dashboard.panels-wells">面板</a>
+                        <a ui-sref="dashboard.op-revenue">营业收入</a>
                     </li>
                     <li ui-sref-active="active">
-                        <a ui-sref="dashboard.buttons">按钮</a>
+                        <a ui-sref="dashboard.op-cost">营业成本</a>
                     </li>
                     <li ui-sref-active="active">
-                        <a ui-sref="dashboard.notifications">通知</a>
+                        <a ui-sref="dashboard.co-expense">管理费用</a>
                     </li>
                     <li ui-sref-active="active">
-                        <a ui-sref="dashboard.icons"> 图标</a>
+                        <a ui-sref="dashboard.fi-expense">财务费用</a>
                     </li>
                     <li ui-sref-active="active">
-                        <a ui-sref="dashboard.grid">宫格</a>
+                        <a ui-sref="dashboard.ic-tax">所得税</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.va-tax">增值税</a>
                     </li>
                 </ul>
-                <!-- /.nav-second-level -->
             </li>
+
             <li ng-class="{active:collapseVar==4}">
-                <a href="" ng-click="check(4)"><i class="fa fa-files-o fa-fw"></i> 页面<span
-                        class="fa arrow"></span></a>
+                <a href="" ng-click="check(4)"><i class="fa fa-files-o fa-fw"></i> 系统管理<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" collapse="collapseVar!=4">
                     <li>
                         <a ui-sref="login">登录</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.blank">登出</a>
                     </li>
                 </ul>
             </li>
