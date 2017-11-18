@@ -1,5 +1,6 @@
 package mobi.dashuxia.web.api;
 
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ import mobi.dashuxia.service.CustomerService;
 @RestController
 @RequestMapping("/")
 public class CustomerController extends BaseController {
-
+    static final String REST_PATH = "/api/v1/customers";
     @Autowired
     CustomerService customerService;
 
@@ -36,7 +37,7 @@ public class CustomerController extends BaseController {
         return "public/index";
     }
 
-    @RequestMapping(value = "/api/v1/customers",
+    @RequestMapping(value = REST_PATH,
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Customer>> findAll() throws Exception {
@@ -46,7 +47,7 @@ public class CustomerController extends BaseController {
     }
 
     @SuppressWarnings("rawtypes")
-    @RequestMapping(value = "/api/v1/customers/search",
+    @RequestMapping(value = REST_PATH + "/search",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PageInfo> search(@RequestParam("s") String keywords,
@@ -61,7 +62,7 @@ public class CustomerController extends BaseController {
         return new ResponseEntity<PageInfo>(pageInfo, HttpStatus.OK);
     }
 
-    @RequestMapping(value = { "/api/v1/customers/{id}" },
+    @RequestMapping(value = { REST_PATH + "/{id}" },
         method = { RequestMethod.GET })
     @ResponseBody
     public Customer findOne(@PathVariable("id") Long id) throws Exception {
@@ -69,7 +70,7 @@ public class CustomerController extends BaseController {
         return res.get(1000, TimeUnit.MILLISECONDS);
     }
 
-    @RequestMapping(value = { "/api/v1/customers/{id}" },
+    @RequestMapping(value = { REST_PATH + "/{id}" },
         method = { RequestMethod.PUT })
     @ResponseBody
     public Integer activate(@PathVariable("id") @NotNull @NotEmpty Long id,

@@ -1,6 +1,5 @@
 package mobi.dashuxia.service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.regex.Matcher;

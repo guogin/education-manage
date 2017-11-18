@@ -24,10 +24,11 @@ app.controller('CustomerCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstan
             },
             {
                 name: 'isActivated', filter: {
-                term: true,
-                type: uiGridConstants.filter.SELECT,
-                selectOptions: [{value: true, label: '是'}, {value: false, label: '否'}]
-            }, width: 80, displayName: '启用', enableSorting: false
+	                term: true,
+	                type: uiGridConstants.filter.SELECT,
+	                selectOptions: [{value: true, label: '是'}, {value: false, label: '否'}]
+	            }, 
+	            width: 80, displayName: '激活状态', enableSorting: false
             },
         ],
 

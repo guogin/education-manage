@@ -2,35 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mobi.dashuxia.mapper.StudentMapper">
 	<sql id="all_fields">
-		id, student_name, birthday, customer_id, class_period, done_periods, left_periods, is_child
+		s.id, student_name, birthday, customer_id, class_period, done_periods, left_periods, is_child, name, mobile_phone
 	</sql>
 	<resultMap type="mobi.dashuxia.domain.Student" id="StudentMap">
 		<result property="id" column="id" />
-		<result property="student_name" column="studentName" />
+		<result property="studentName" column="student_name" />
 		<result property="birthday" column="birthday" />
-		<result property="customer_id" column="customerId" />
-		<result property="class_period" column="classPeriod" />
-		<result property="done_periods" column="donePeriods" />
-		<result property="left_periods" column="leftPeriods" />
-		<result property="is_child" column="isChild" />
+		<result property="customerId" column="customer_id" />
+		<result property="classPeriod" column="class_period" />
+		<result property="donePeriods" column="done_periods" />
+		<result property="leftPeriods" column="left_periods" />
+		<result property="isChild" column="is_child" />
+		<result property="parentName" column="name" />
+		<result property="mobilePhone" column="mobile_phone" />
 	</resultMap>
 
 	<select id="findById" resultMap="StudentMap">
 		select
 		<include refid="all_fields" />
-		from student where id = #{id}
+		from student s left join customer c on s.customer_id = c.id  where s.id = #{id}
 	</select>
 
 	<select id="findAll" resultMap="StudentMap">
 		select
 		<include refid="all_fields" />
-		from student
+		from student s left join customer c on s.customer_id = c.id
 	</select>
 
 	<select id="search" resultMap="StudentMap">
 		SELECT
 		<include refid="all_fields" />
-		FROM Student where
+		FROM student s left join customer c on s.customer_id = c.id where
 		<foreach collection="array" item="keyword" separator="OR"
 			open="(" close=")">
 			student_name like CONCAT('%',#{keyword},'%')
@@ -38,7 +40,7 @@
 		OR
 		<foreach collection="array" item="keyword" separator="OR"
 			open="(" close=")">
-			id like CONCAT('%',#{keyword},'%')
+			s.id like CONCAT('%',#{keyword},'%')
 		</foreach>
 		OR
 		<foreach collection="array" item="keyword" separator="OR"

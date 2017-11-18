@@ -13,13 +13,17 @@ public class Student {
     private int classPeriod;
     private int leftPeriods;
     private int donePeriods;
+    private String parentName;
+    private String mobilePhone;
     @NonNull
     private Long customerId;
 
-    public Student() {}
-    
-    public Student(String id, String name, String birthday, Long customerId, Integer classPeriod,
-            Integer donePeriods, Integer leftPeriods, Boolean isChild) {
+    public Student() {
+    }
+
+    public Student(String id, String name, String birthday, Long customerId,
+            Integer classPeriod, Integer donePeriods, Integer leftPeriods,
+            Boolean isChild, String parentName, String mobilePhone) {
         this.id = id;
         this.studentName = name;
         this.birthday = birthday;
@@ -28,5 +32,7 @@ public class Student {
         this.donePeriods = donePeriods;
         this.leftPeriods = leftPeriods;
         this.isChild = isChild;
+        this.parentName = parentName;
+        this.mobilePhone = mobilePhone;
     }
 }

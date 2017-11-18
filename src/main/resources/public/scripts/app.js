@@ -145,16 +145,16 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                     }
                 }
             })
-            .state('dashboard.supplier', {
-            	controller: 'SupplierCtrl',
-                templateUrl: 'views/supplier/main.html',
-                url: '/supplier',
+            .state('dashboard.student', {
+            	controller: 'StudentCtrl',
+                templateUrl: 'views/student/main.html',
+                url: '/student',
                 resolve: {
                     loadMyFiles: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name: 'myApp',
                             files: [
-                                'scripts/controllers/supplier/main.js',
+                                'scripts/controllers/student/main.js',
                             ]
                         })
                     }

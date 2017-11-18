@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProductCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstants',
+app.controller('StudentCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstants',
     function ($scope, i18nService, $http, uiGridConstants) {
     i18nService.setCurrentLang('zh-cn');
 
@@ -16,24 +16,22 @@ app.controller('ProductCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
         useExternalPagination: true,
         useExternalSorting: true,
         columnDefs: [
-            {name: 'id', width: 80, displayName: '排序号', enableSorting: true, visible: true},
-            {name: 'category_id', width: 90, displayName: '类目编码', enableSorting: false},
-            {name: 'category_name', width: '*', displayName: '类目名称', enableSorting: false},
+            {name: 'id', width: 80, displayName: '学号', enableSorting: true, visible: true},
+            {name: 'studentName', width: 120, displayName: '姓名', enableSorting: false},
+            {name: 'birthday', width: 120, displayName: '生日', enableSorting: false},
             {
-                name: 'comment', width: '*', displayName: '备注', enableSorting: false
+                name: 'classPeriod', width: 80, displayName: '总课时', enableSorting: false
             },
-            {name: 'parent_id', width: 100, displayName: '父类目编码', enableSorting: false},
-            {name: 'category_level', width: 60, displayName: '级别', enableSorting: false},
-            {name: 'auto_pay_enabled', width: 90, displayName: '自动支付', enableSorting: false},
-            {name: 'best_offer_enabled', width: 90, displayName: '最佳货源', enableSorting: false},
-            {name: 'leaf_category', width: 90, displayName: '子类目', enableSorting: false},
-            {name: 'lsd', width: 60, displayName: 'LSD', enableSorting: false},
+            {name: 'donePeriods', width: 80, displayName: '完成课时', enableSorting: false},
+            {name: 'leftPeriods', width: 80, displayName: '剩余课时', enableSorting: false},
+            {name: 'parentName', width: 120, displayName: '家长姓名', enableSorting: false},
+            {name: 'mobilePhone', width: 120, displayName: '家长手机', enableSorting: false},
             {
-                name: 'enabled', filter: {
-                term: '1',
+                name: 'isChild', filter: {
+                term: true,
                 type: uiGridConstants.filter.SELECT,
-                selectOptions: [{value: '1', label: '是'}, {value: '0', label: '否'}]
-            }, width: 80, displayName: '启用', enableSorting: false
+                selectOptions: [{value: true, label: '是'}, {value: false, label: '否'}]
+            }, width: 80, displayName: '是否为孩子', enableSorting: false
             },
         ],
 
@@ -70,7 +68,7 @@ app.controller('ProductCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
     };
 
     $scope.search = function () {
-        var sUrl = '/api/category/search?s=' +
+        var sUrl = '/api/v1/students/search?s=' +
             $scope.queryText + "&size=" +
             $scope.gridOptions.paginationPageSize
 
@@ -83,14 +81,14 @@ app.controller('ProductCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
     };
 
     var loadDataAfterPaginationChange = function () {
-        var sUrl = '/api/category/search?s=' +
+        var sUrl = '/api/v1/students/search?s=' +
             $scope.queryText + "&size=" +
             $scope.gridOptions.paginationPageSize + '&page=' +
             $scope.gridApi.grid.options.paginationCurrentPage;
 
         if ($scope.queryText == '' || $scope.queryText == undefined || $scope.queryText == 'undefined') {
 
-            sUrl = '/api/category?size=' +
+            sUrl = '/api/v1/students?size=' +
                 $scope.gridOptions.paginationPageSize + '&page=' +
                 $scope.gridApi.grid.options.paginationCurrentPage;
         }
@@ -103,7 +101,7 @@ app.controller('ProductCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
     };
 
     var initialLoadPage = function () {
-        var sUrl = '/api/category?size=' + $scope.gridOptions.paginationPageSize
+        var sUrl = '/api/v1/students?size=' + $scope.gridOptions.paginationPageSize
         var promise = $http({
             method: 'GET',
             url: sUrl
@@ -114,7 +112,8 @@ app.controller('ProductCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
     initialLoadPage();
 
     $scope.updateState = function () {
-        var updatePromise = $http.post('/api/category/update', this.category);
+    	var sUrl = '/api/v1/students/update' + this.student.id
+        var updatePromise = $http.post(sUrl, this.student);
         updatePromise.then(function (resp) {
             console.log(resp.data + " row of record(s) update success");
         }, function (resp) {
