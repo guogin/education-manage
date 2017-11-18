@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.buyrui</groupId>
-	<artifactId>finding.ebayitems</artifactId>
+	<groupId>mobi.dashuxia</groupId>
+	<artifactId>painting-manage</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>finding-ebayitems</name>
-	<description>Product Profit Calculation</description>
+	<name>huahua-dashuxia</name>
+	<description>DaShuXia Painting Management System</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -21,15 +21,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<start-class>com.buyrui.finding.ebayitems.App</start-class>
+		<start-class>mobi.dashuxia.App</start-class>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.ebay</groupId>
-			<artifactId>finding</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

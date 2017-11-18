@@ -1,6 +1,6 @@
 jdbc:
   driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/mcdb?useUnicode=yes&amp;charaterEncoding=utf-8
+  url: jdbc:mysql://localhost:3306/club?useUnicode=yes&amp;charaterEncoding=utf-8
   username: root
   password: 
   maxActive: 3
