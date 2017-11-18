@@ -1,4 +1,4 @@
-package mobi.dashuxia.configuration.mybatis;
+package mobi.dashuxia.config;
 
 import java.util.Properties;
 
@@ -24,8 +24,6 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
-
-import mobi.dashuxia.configuration.JdbcConnectionSettings;
 
 @Configuration
 @EnableTransactionManagement

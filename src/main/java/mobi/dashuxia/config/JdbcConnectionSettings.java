@@ -1,4 +1,4 @@
-package mobi.dashuxia.configuration;
+package mobi.dashuxia.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
