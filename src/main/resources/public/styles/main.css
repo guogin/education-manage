@@ -93,3 +93,7 @@ body {
 text-decoration: none;
 background-color: #eee;
 }
+
+.grid-align {
+    text-align: center;
+}

@@ -1,6 +1,5 @@
 package mobi.dashuxia.mapper;
 
-import java.util.Collection;
 import java.util.List;
 
 import mobi.dashuxia.domain.Customer;
@@ -17,7 +16,7 @@ public interface CustomerMapper {
      * 查出所有客户
      * @return
      */
-    Collection<Customer> findAll();
+    List<Customer> findAll();
     /**
      * 根据关键字搜索用户
      * @param key

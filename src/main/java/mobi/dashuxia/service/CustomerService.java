@@ -1,6 +1,6 @@
 package mobi.dashuxia.service;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,11 +32,17 @@ public class CustomerService {
 		return new AsyncResult<Void>(null);
 	}
 	
-	@Async
-	public Future<Collection<Customer>> findAll(){
-	    logger.info("> Find All");
-	    return new AsyncResult<Collection<Customer>>(customerMapper.findAll());
-	}
+    @SuppressWarnings("rawtypes")
+    @Async
+    public Future<PageInfo> findAll(Integer page, Integer size) {
+        logger.info("> Find All page:" + page + ", size: " + size);
+
+        PageHelper.startPage(page, size);
+        PageHelper.orderBy("id desc");
+        List<Customer> collection = customerMapper.findAll();
+        PageInfo<Customer> pageInfo = new PageInfo<Customer>(collection);
+        return new AsyncResult<PageInfo>(pageInfo);
+    }
 	
     @SuppressWarnings("rawtypes")
     @Async

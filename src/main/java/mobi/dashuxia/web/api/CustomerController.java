@@ -1,7 +1,5 @@
 package mobi.dashuxia.web.api;
 
-import java.nio.file.Path;
-import java.util.Collection;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -37,13 +35,18 @@ public class CustomerController extends BaseController {
         return "public/index";
     }
 
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = REST_PATH,
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Collection<Customer>> findAll() throws Exception {
-        Future<Collection<Customer>> future = customerService.findAll();
-        Collection<Customer> users = future.get(10000, TimeUnit.MILLISECONDS);
-        return new ResponseEntity<Collection<Customer>>(users, HttpStatus.OK);
+    public ResponseEntity<PageInfo> findAll(@RequestParam(required = false,
+        value = "page",
+        defaultValue = "1") Integer page, @RequestParam(required = false,
+            value = "size",
+            defaultValue = "10") Integer size) throws Exception {
+        Future<PageInfo> future = customerService.findAll(page, size);
+        PageInfo pageInfo = future.get(10000, TimeUnit.MILLISECONDS);
+        return new ResponseEntity<PageInfo>(pageInfo, HttpStatus.OK);
     }
 
     @SuppressWarnings("rawtypes")

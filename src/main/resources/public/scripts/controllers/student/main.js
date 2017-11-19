@@ -16,22 +16,19 @@ app.controller('StudentCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
         useExternalPagination: true,
         useExternalSorting: true,
         columnDefs: [
-            {name: 'id', width: 80, displayName: '学号', enableSorting: true, visible: true},
+            {name: 'id', width: 80, displayName: '学号', enableSorting: true, visible: true, cellClass: 'grid-align'},
             {name: 'studentName', width: 120, displayName: '姓名', enableSorting: false},
             {name: 'birthday', width: 120, displayName: '生日', enableSorting: false},
             {
-                name: 'classPeriod', width: 80, displayName: '总课时', enableSorting: false
+                name: 'classPeriod', width: 100, displayName: '总课时', enableSorting: false
             },
-            {name: 'donePeriods', width: 80, displayName: '完成课时', enableSorting: false},
-            {name: 'leftPeriods', width: 80, displayName: '剩余课时', enableSorting: false},
+            {name: 'donePeriods', width: 100, displayName: '完成课时', enableSorting: false},
+            {name: 'leftPeriods', width: 100, displayName: '剩余课时', enableSorting: false},
             {name: 'parentName', width: 120, displayName: '家长姓名', enableSorting: false},
             {name: 'mobilePhone', width: 120, displayName: '家长手机', enableSorting: false},
             {
-                name: 'isChild', filter: {
-                term: true,
-                type: uiGridConstants.filter.SELECT,
-                selectOptions: [{value: true, label: '是'}, {value: false, label: '否'}]
-            }, width: 80, displayName: '是否为孩子', enableSorting: false
+                name: 'child', type: 'boolean', cellTemplate: '<input disabled type="checkbox" ng-model="row.entity.child">', 
+                width: 100, displayName: '成人', enableSorting: false, headerCellClass: "grid-align", cellClass: 'grid-align'
             },
         ],
 
@@ -112,7 +109,7 @@ app.controller('StudentCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstant
     initialLoadPage();
 
     $scope.updateState = function () {
-    	var sUrl = '/api/v1/students/update' + this.student.id
+    	var sUrl = '/api/v1/students/' + this.student.id
         var updatePromise = $http.post(sUrl, this.student);
         updatePromise.then(function (resp) {
             console.log(resp.data + " row of record(s) update success");

@@ -9,27 +9,45 @@ app.controller('CustomerCtrl', ['$scope', 'i18nService', '$http', 'uiGridConstan
         pageSize: 25,
         sort: null
     };
-
+    
+    $scope.activateCustomer = function(value, customer){
+    	
+    	
+    	if(customer.activated) {
+    		alert(customer.name + ",已经激活");
+    	} else {
+    		var sUrl = '/api/v1/customers/' + value;
+    		customer.activated = true;
+    		var updatePromise = $http.put(sUrl, customer);
+            updatePromise.then(function (resp) {
+            	customer.activated = true;
+            	alert("激活客户("+customer.name + "）成功!");
+            }, function (resp) {
+            	customer.activated = false;
+            	alert("激活客户("+customer.name + "）失败!");
+            })
+    	}
+	};
+	
     $scope.gridOptions = {
         paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
         useExternalPagination: true,
         useExternalSorting: true,
         columnDefs: [
-            {name: 'id', width: 80, displayName: '客户编号', enableSorting: true, visible: true},
-            {name: 'mobilePhone', width: 120, displayName: '手机号码', enableSorting: false},
-            {name: 'name', width: 120, displayName: '客户姓名', enableSorting: false},
+            {name: 'id', width: 100, displayName: '客户编号', enableSorting: true, visible: true, cellClass: 'grid-align'},
+            {name: 'mobilePhone', width: "*", displayName: '手机号码', enableSorting: false},
+            {name: 'name', width: "*", displayName: '客户姓名', enableSorting: false},
             {
                 name: 'address', width: "*", displayName: '地址', enableSorting: false
             },
             {
-                name: 'isActivated', filter: {
-	                term: true,
-	                type: uiGridConstants.filter.SELECT,
-	                selectOptions: [{value: true, label: '是'}, {value: false, label: '否'}]
-	            }, 
-	            width: 80, displayName: '激活状态', enableSorting: false
+                name: 'activated', type: 'boolean', cellTemplate: '<input disabled type="checkbox" ng-model="row.entity.activated">' , 
+	            width: 100, displayName: '激活状态', enableSorting: false, cellClass: 'grid-align'
             },
+            {
+            	name:'行动',headerCellClass: "grid-align", cellClass: 'grid-align', cellTemplate: '<div><button class="btn btn-sm btn-primary" ng-click="grid.appScope.activateCustomer(row.entity.id, row.entity)">激活客户</button></div>'
+            }
         ],
 
         onRegisterApi: function (gridApi) {
