@@ -49,10 +49,8 @@
 	<update id="update" parameterType="mobi.dashuxia.domain.Customer">
         UPDATE customer
         <set>
-            <if test="name != null"> name = #{name,jdbcType=VARCHAR}, </if>
             <if test="mobilePhone != null"> mobile_phone = #{mobilePhone,jdbcType=VARCHAR}, </if>
             <if test="isActivated != null"> is_activated = #{isActivated,jdbcType=TINYINT}, </if>
-            <if test="address != null"> address = #{address,jdbcType=VARCHAR}, </if>
         </set>
         WHERE id = #{id};
     </update>

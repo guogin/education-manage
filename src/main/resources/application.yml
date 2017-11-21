@@ -1,8 +1,8 @@
 server:
-  port: 8362
+  port: 8080
 jdbc:
   driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/club?useUnicode=yes&amp;charaterEncoding=utf-8
+  url: jdbc:mysql://101.132.129.129:3306/club?useUnicode=yes&amp;charaterEncoding=utf-8
   username: club
   password: Passw0rd!
   maxActive: 3
